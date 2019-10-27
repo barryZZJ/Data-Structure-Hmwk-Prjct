@@ -50,6 +50,7 @@ void postOrderUnrec(BinNode<E>* root){
         
         while(tmp){
             stack.push(tmp);
+            //第一次遇到该元素，没有seen过
             has_seen.push(false);
             tmp = tmp->left();
         }
@@ -60,7 +61,7 @@ void postOrderUnrec(BinNode<E>* root){
                 visit(stack.pop());
             }else{
                 tmp = stack.topValue();
-                //第二次遇到栈顶元素，has seen了
+                //第二次遇到栈顶元素，seen了
                 has_seen.push(true);
                 tmp = tmp->right();
             }
