@@ -42,7 +42,7 @@ void inOrderUnrec(BinNode<E>* root){
 template<typename E>
 void postOrderUnrec(BinNode<E>* root){
     AStack<BinNode<E>*> stack;
-    AStack<bool> has_poped;
+    AStack<bool> has_seen;
 
     BinNode<E>* tmp = root;
 
@@ -50,16 +50,18 @@ void postOrderUnrec(BinNode<E>* root){
         
         while(tmp){
             stack.push(tmp);
-            has_poped.push(false);
+            has_seen.push(false);
             tmp = tmp->left();
         }
 
         if(stack.length()){
-            if(has_poped.pop()){
+            if(has_seen.pop()){
+                //第三次遇见栈顶元素，就可以输出了
                 visit(stack.pop());
             }else{
                 tmp = stack.topValue();
-                has_poped.push(true);
+                //第二次遇到栈顶元素，has seen了
+                has_seen.push(true);
                 tmp = tmp->right();
             }
         }
