@@ -5,7 +5,7 @@
 
 // （3）用堆实现函数 int find_kth_smallest(int* A, int n, int k) 从A中找出第k小的值, n为A的规模
 
-#include "../MinHeap.cpp"
+#include "../Heaps/Heap.cpp"
 #include <iostream>
 
 using namespace std;

@@ -1,4 +1,4 @@
-#include "LList.cpp"
+#include "../Lists_Link/LList.cpp"
 
 void compress(LList<int>* A){
     if (A->length() == 1) return;
