@@ -64,6 +64,7 @@ public:
         }
     }
 
+    //E removefirst()
     E pop(){
         assert(n>0);
         std::swap(Heap[0], Heap[n-1]);
