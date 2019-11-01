@@ -1,10 +1,10 @@
 // (3) 使用（2）的函数，计算节点 BinNode<E>* x,y的最近共同祖先
 // 如果x,y都在树中，返回共同祖先的位置，否则返回NULL
 #include "../Binary_Trees/BSTNode.cpp"
-#include "../AStack.cpp"
+#include "../Stacks/AStack.cpp"
 #include "../Binary_Trees/init.cpp"
 #include "../Binary_Trees/visit.cpp"
-#include "../doublyLList.cpp"
+#include "../Lists_Link/doublyLList.cpp"
 #include "2.cpp"
 #include <iostream>
 
