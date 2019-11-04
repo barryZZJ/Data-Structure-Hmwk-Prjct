@@ -1,12 +1,12 @@
 //确认是否是合理的出栈顺序
 //限制栈内最多只能存k个数
 #include <iostream>
-#include "AStack.cpp"
+#include "1_QStack.cpp"
 
 using namespace std;
 
 bool valid_pop_sequence(int* A, int n, int k){
-    AStack<int> s(n);
+    QStack<int> s(n);
     int i = 1;
     int ia = 0;
     while(i<=n and ia<n){

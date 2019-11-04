@@ -6,7 +6,7 @@
 const int defaultSize = 1024;
 
 template <typename E>
-class QStack :{
+class QStack :public Stack<E>{
 private:
     int maxSize; //栈的容量
     AQueue<E> QA;
@@ -38,8 +38,7 @@ public:
             while(QA.length() > 1)
                 QB.enqueue(QA.dequeue());
             return QA.dequeue();
-        }
-        else{
+        }else{
             while(QB.length() > 1)
                 QA.enqueue(QB.dequeue());
             return QB.dequeue();
@@ -47,10 +46,20 @@ public:
     }
 
     const E topValue() {
-        while(QA.length() > 1)
-            QB.enqueue(QA.dequeue());
-        E it = QA.dequeue();
-        QB.enqueue(it);
+        assert(QA.length() || QB.length()); //如果QA，QB都为空则报错
+        E it;
+        //把一个Queue里的元素都倒到另一个Queue里，其中输出最后一个元素
+        if (QA.length()){
+            while(QA.length() > 1)
+                QB.enqueue(QA.dequeue());
+            it = QA.dequeue();
+            QB.enqueue(it);
+        }else{
+            while(QB.length() > 1)
+                QA.enqueue(QB.dequeue());
+            it = QB.dequeue();
+            QA.enqueue(it);
+        }
         return it;
     }
 
@@ -58,17 +67,3 @@ public:
         return QA.length() + QB.length();
     }
 };
-
-using namespace std;
-int main(){
-    QStack<int> s;
-    s.push(1);
-    s.push(2);
-    s.push(3);
-    s.push(4);
-    s.push(5);
-    s.push(6);
-    // cout<<s.length() << endl;
-    // cout<<s.topValue() << endl;
-    while(s.length())   cout<<s.pop()<<endl;
-}
