@@ -32,7 +32,7 @@ public:
         listArray[top++] = it;
     }
 
-    const E pop(){
+    E pop(){
         // assert(top != 0);
         if(top == 0){
             cout<<"Stack is empty!!!";
@@ -41,7 +41,7 @@ public:
         return listArray[--top];
     }
 
-    const E& topValue() const{
+    const E& topValue(){
         // assert(top != 0);
         if(top == 0){
             cout<<"Stack is empty!!!";

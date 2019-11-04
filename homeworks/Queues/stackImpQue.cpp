@@ -1,6 +1,6 @@
 #include <queue>
 #include <iostream>
-#include "AStack.cpp"
+#include "../Stacks/AStack.cpp"
 
 using namespace std;
 

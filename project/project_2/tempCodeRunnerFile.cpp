@@ -1,0 +1,2 @@
+AQueue&){}
+    AQueue(const AQueue&){}
