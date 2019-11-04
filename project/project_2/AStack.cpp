@@ -41,7 +41,7 @@ public:
         return listArray[--top];
     }
 
-    const E& topValue(){
+    const E topValue(){
         // assert(top != 0);
         if(top == 0){
             cout<<"Stack is empty!!!";

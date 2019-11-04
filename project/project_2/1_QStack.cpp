@@ -6,7 +6,7 @@
 const int defaultSize = 1024;
 
 template <typename E>
-class QStack : public Stack<E>{
+class QStack :{
 private:
     int maxSize; //栈的容量
     AQueue<E> QA;
