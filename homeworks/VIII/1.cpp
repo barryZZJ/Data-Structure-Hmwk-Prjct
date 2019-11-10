@@ -10,7 +10,7 @@ using namespace std;
 template <typename Key, typename E>
 E BST<Key,E>::remove_norec(const Key& k){
     BSTNode<Key, E>* it = root;
-    BSTNode<Key, E>* pit; //it的父节点，为了修改pit的儿子指向
+    BSTNode<Key, E>* pit = NULL; //it的父节点，为了修改pit的儿子指向
     bool isleft = true; //root 是pit的左儿子还是右儿子，用于确定pit是setleft还是setright
 
     //先找到要删的节点it和it的父节点
@@ -38,13 +38,15 @@ E BST<Key,E>::remove_norec(const Key& k){
     if (it->left() == NULL){
         //没有左儿子，it替换为右儿子（或空）
         it = it->right();
-        isleft ? pit->setLeft(it) : pit->setRight(it); //把pit的儿子换成新儿子
+        if(pit)
+            isleft ? pit->setLeft(it) : pit->setRight(it); //把pit的儿子换成新儿子
         delete temp;
     }
     else if (it->right() == NULL){
         //有左儿子没有右儿子，it替换为左儿子
         it = it->left();
-        isleft ? pit->setLeft(it) : pit->setRight(it); //把pit的儿子换成新儿子
+        if(pit)
+            isleft ? pit->setLeft(it) : pit->setRight(it); //把pit的儿子换成新儿子
         delete temp;
     }
     else{ //两个儿子都有
