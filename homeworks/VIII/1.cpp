@@ -34,14 +34,22 @@ public:
 
     E remove_norec(const Key& k){
         BSTNode<Key, E>* it = root;
-        //先找到要删的节点it
-        while (k != it->key()){
+        BSTNode<Key, E>* pit; //it的父节点，为了修改pit的儿子指向
+        bool isleft = true; //root 是pit的左儿子还是右儿子，用于确定pit是setleft还是setright
 
-            while (k < it->key())
+        //先找到要删的节点it和it的父节点
+        while (it && k != it->key()){
+
+            pit = it;
+            if (k < it->key()){
+                isleft = true;
                 it = it->left();
+            }
             
-            while (k > it->key())
+            if (it && k > it->key()){
+                isleft = false;
                 it = it->right();
+            }
             
         }
 
@@ -54,11 +62,13 @@ public:
         if (it->left() == NULL){
             //没有左儿子，it替换为右儿子（或空）
             it = it->right();
+            isleft ? pit->setLeft(it) : pit->setRight(it); //把pit的儿子换成新儿子
             delete temp;
         }
         else if (it->right() == NULL){
             //有左儿子没有右儿子，it替换为左儿子
             it = it->left();
+            isleft ? pit->setLeft(it) : pit->setRight(it); //把pit的儿子换成新儿子
             delete temp;
         }
         else{ //两个儿子都有
@@ -76,6 +86,7 @@ public:
             PS->setLeft(S->right());
             it->setKey(S->key());
             it->setElement(S->element());
+            //it指针没有变，因此不用改pit
 
             //最后删掉S
             delete S;
@@ -224,11 +235,11 @@ template <typename Key, typename E>
 void BST<Key, E>::
 printhelp(BSTNode<Key, E>* root, int level) const {
   if (root == NULL) return;           // Empty tree
-  printhelp(root->left(), level+1);   // Do left subtree
+  printhelp(root->right(), level+1);   // Do left subtree
   for (int i=0; i<level; i++)         // Indent to level
     cout << "  ";
   cout << root->key() << "\n";        // Print node value
-  printhelp(root->right(), level+1);  // Do right subtree
+  printhelp(root->left(), level+1);  // Do right subtree
 }
 
 
@@ -250,18 +261,31 @@ int main(){
   myBST->print();
 
   cout<<endl;
-  
-  //删只有右儿子的
-  myBST->remove_norec(43);
-  cout<<"after"<<endl;
-  myBST->print();
 
-  // //删只有左儿子的
+  //没有可以删的
+  cout<<myBST->remove_norec(30);
+  
+  // //删只有右儿子的
+  // // cout<<"correct:"<<endl;
+  // // myBST->remove(43);
+  // cout<<"after"<<endl;
+  // myBST->remove_norec(43);
+  // myBST->print();
+
+  //删只有左儿子的
+  // cout<<"correct:"<<endl;
+  // myBST->remove(7);
+  // cout<<"after"<<endl;
   // myBST->remove_norec(7);
   // myBST->print();
 
-  // //删有俩儿子的
-  // myBST->remove_norec(42);
+  //删有俩儿子的
+  // cout<<"correct:"<<endl;
+  // myBST->remove(37);
+  // myBST->print();
+  // cout<<"after"<<endl;
+  // myBST->remove_norec(37);
+  // myBST->print();
   
 
 }
