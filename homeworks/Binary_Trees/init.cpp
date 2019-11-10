@@ -1,5 +1,5 @@
 #pragma once
-#include "BSTNode.cpp"
+#include "BSTNode_modi.cpp"
 
 template<typename E>
 void init(BSTNode<E>*& root){
