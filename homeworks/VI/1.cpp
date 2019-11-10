@@ -1,7 +1,7 @@
 // （1）编程计算二分树中叶节点的数量
 
 // 没有儿子的是叶节点
-#include "../Binary_Trees/BSTNode.cpp"
+#include "../Binary_Trees/BSTNode_modi.cpp"
 #include "../Binary_Trees/init.cpp"
 #include <iostream>
 

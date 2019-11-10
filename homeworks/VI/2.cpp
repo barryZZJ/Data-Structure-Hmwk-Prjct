@@ -3,7 +3,7 @@
 // 如果不在，栈为空，
 // 用非递归（参考前序遍历）的方式实现函数。
 #pragma once
-#include "../Binary_Trees/BSTNode.cpp"
+#include "../Binary_Trees/BSTNode_modi.cpp"
 #include "../Stacks/AStack.cpp"
 #include "../Binary_Trees/init.cpp"
 #include "../Binary_Trees/visit.cpp"
