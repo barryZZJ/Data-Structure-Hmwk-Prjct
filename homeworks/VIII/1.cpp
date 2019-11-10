@@ -33,14 +33,16 @@ public:
   ~BST() { clearhelp(root); }            // Destructor
 
     E remove_norec(const Key& k){
-        BSTNode<Key, E>* it;
+        BSTNode<Key, E>* it = root;
         //先找到要删的节点it
-        while (k != root->key()){
-            while (k < root->key())
-                it = root->left();
+        while (k != it->key()){
+
+            while (k < it->key())
+                it = it->left();
             
-            while (k > root->key())
-                it = root->right();
+            while (k > it->key())
+                it = it->right();
+            
         }
 
         //it 是需要被删除的点
@@ -238,9 +240,28 @@ int main(){
   myBST->insert(7, 7);
   myBST->insert(32, 32);
   myBST->insert(40, 40);
-  myBST->insert(42, 42);
+  myBST->insert(38, 38);
+  myBST->insert(39, 39);
+  myBST->insert(43, 43);
   myBST->insert(2, 2);
   myBST->insert(120, 120);
+
+  cout<<"before"<<endl;
   myBST->print();
+
+  cout<<endl;
+  
+  //删只有右儿子的
+  myBST->remove_norec(43);
+  cout<<"after"<<endl;
+  myBST->print();
+
+  // //删只有左儿子的
+  // myBST->remove_norec(7);
+  // myBST->print();
+
+  // //删有俩儿子的
+  // myBST->remove_norec(42);
+  
 
 }
