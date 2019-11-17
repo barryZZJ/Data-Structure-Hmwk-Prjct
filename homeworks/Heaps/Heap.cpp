@@ -1,6 +1,7 @@
+#pragma once
 #include <cassert>
 #include <utility> //std::swap
-#include <queue>
+// #include <queue>
 
 template <typename E>
 struct compLess{
@@ -52,7 +53,7 @@ public:
     inline int rightchild(int pos) const{return 2*pos + 2;}
     inline int parent(int pos) const{return (pos-1)/2;}
 
-
+    // void insert(const E& it){
     void push(const E& it){
         //插入到最后，然后不断向上提升直到不满足父子的大小关系
         assert(n < maxsize);
@@ -64,7 +65,7 @@ public:
         }
     }
 
-    //E removefirst()
+    // E removefirst(){
     E pop(){
         assert(n>0);
         std::swap(Heap[0], Heap[n-1]);

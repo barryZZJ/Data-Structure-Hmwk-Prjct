@@ -11,6 +11,8 @@
 using namespace std;
 int find_kth_smallest(int* A, int n, int k){
     heap<int>h = heap<int>(A, n, n);
+    h.pop();
+    h.push(15);
     int tmp;
     for (int i = 0; i < k; i++){
         tmp = h.pop();// h.remove()
